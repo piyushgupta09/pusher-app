@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OrderStatusUpdated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+class Order {
+    public $id;
+    public $status;
+    public $total;
+
+    public function __construct($id, $status, $total) {
+        $this->id = $id;
+        $this->status = $status;
+        $this->total = $total;
+    }
+}
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/update', function() {
+    OrderStatusUpdated::dispatch(new Order(21, 'in-transit', '487500'));
 });
