@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\OrderStatusUpdated;
+use App\Http\Livewire\TaskManager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Level 1
 class Order {
     public $id;
     public $status;
@@ -27,9 +29,13 @@ class Order {
 }
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->route('tasks');
 });
 
-Route::get('/update', function() {
-    OrderStatusUpdated::dispatch(new Order(21, 'in-transit', '487500'));
-});
+// Route::get('/update', function() {
+//     OrderStatusUpdated::dispatch(new Order(21, 'in-transit', '487500'));
+// });
+
+// Level 2
+Route::get('tasks', TaskManager::class)->name('tasks');

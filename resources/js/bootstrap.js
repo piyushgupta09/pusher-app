@@ -35,7 +35,7 @@ window.Echo = new Echo({
 });
 
 window.Echo.channel('orders')
-    .listen('OrderStatusUpdated', e => {
-        console.log('Order Status has been updated behind the scenes.');
-        console.log(e);
-    });
+.listen('OrderStatusUpdated', e => {
+    console.log('Order Status has been updated behind the scenes.');
+    console.log(e);
+});
